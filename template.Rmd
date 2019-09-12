@@ -1,0 +1,127 @@
+---
+title: "template"
+author: "Xin"
+date: "9/12/2019"
+output: html_document
+---
+
+
+I'm an R Markdown document!
+
+# section 1
+here is section 1
+
+tgis is a new line
+
+##subsections 1.1
+ here is a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+library(tidyverse)
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+```{r}
+mean(samp)
+plot_df = tibble(
+x = rnorm(1000, sd = .5),
+y = 1 + 2 * x + rnorm(1000)
+)
+```
+
+the number of rows in plot_df is r nrow(plot_df)
+
+The chunk below creates a dataframe containing a sample of size 500 from a 
+random normal variable and the absolute value of each element of that sample, 
+and produces a histogram of the absolute value.
+
+```{r learning_assessment_1}
+library(tidyverse)
+
+la_df = tibble(
+  norm_samp = rnorm(500),
+  norm_samp_pos = norm_samp > 0,
+  abs_norm_samp = abs(norm_samp)
+)
+
+ggplot(la_df, aes(x = abs_norm_samp)) + geom_histogram()
+
+median_samp = median(pull(la_df, norm_samp))
+```
+
+The median of the variable containing absolute values is 
+`r round(median_samp, digits = 2)`.
+
+*   Bulleted list item 1
+
+*   Item 2
+
+    * Item 2a
+
+    * Item 2b
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
+
+
+
+
+
+
